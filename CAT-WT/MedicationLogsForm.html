@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medication Logs Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('image/proud.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="time"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover,
+        input[type="reset"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <!-- Medication Logs Form -->
+    <div class="medication-logs-form">
+        <h2>Medication Logs Form</h2>
+        <form id="medicationLogsForm" action="submit_medication_logs.php" method="post">
+    <!-- No Medical ID field here since it's auto-generated -->
+    <label for="userId">User ID:</label>
+    <input type="text" id="userId" name="userId" placeholder="Enter User ID"><br>
+
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date"><br>
+
+    <label for="medicationName">Medication Name:</label>
+    <select id="medicationName" name="medicationName">
+        <option value="" selected disabled hidden>Choose Medication</option>    
+        <option value="Medicine A">Medicine A</option>
+        <option value="Medicine B">Medicine B</option>
+        <option value="Medicine C">Medicine C</option>
+    </select><br>
+
+    <label for="dosage">Dosage:</label>
+    <select id="dosage" name="dosage">
+        <option value="" selected disabled hidden>Choose Dosage</option>    
+        <option value="5mg">5mg</option>
+        <option value="10mg">10mg</option>
+        <option value="20mg">20mg</option>
+    </select><br>
+
+    <label for="frequency">Frequency:</label>
+    <select id="frequency" name="frequency">
+        <option value="" selected disabled hidden>Choose Frequency</option>    
+        <option value="Once daily">Once daily</option>
+        <option value="Twice daily">Twice daily</option>
+        <option value="Three times daily">Three times daily</option>
+    </select><br>
+
+    <input type="submit" value="Submit">
+    <input type="reset" value="Clear">
+</form>
+      
+    </div>
+
+    <!-- Update Form -->
+    <div class="update-form">
+        <h2>Update Form</h2>
+        <form id="updateForm" action="update_medication_logs.php" method="post">
+            <label for="medicalIdUpdate">Medical ID:</label>
+            <input type="text" id="medicalIdUpdate" name="medicalIdUpdate" placeholder="Enter Medical ID"><br>
+
+            <label for="dateUpdate">Date:</label>
+            <input type="date" id="dateUpdate" name="dateUpdate"><br>
+
+           <label for="medicationNameUpdate">Medication Name:</label>
+          <select id="medicationNameUpdate" name="medicationNameUpdate">
+          <option value="" selected disabled hidden>Choose Medication</option>
+          <option value="Medicine A">Medicine A</option>
+          <option value="Medicine B">Medicine B</option>
+          <option value="Medicine C">Medicine C</option>
+          </select><br>
+
+            <label for="dosageUpdate">Dosage:</label>
+            <select id="dosageUpdate" name="dosageUpdate">
+            <option value="" selected disabled hidden>Choose Dosage</option>   
+                <option value="5mg">5mg</option>
+                <option value="10mg">10mg</option>
+                <option value="20mg">20mg</option>
+            </select><br>
+
+            <label for="frequencyUpdate">Frequency:</label>
+            <select id="frequencyUpdate" name="frequencyUpdate">
+          <option value="" selected disabled hidden>Choose Frequency</option>
+                <option value="Once daily">Once daily</option>
+                <option value="Twice daily">Twice daily</option>
+                <option value="Three times daily">Three times daily</option>
+            </select><br>
+
+            <input type="submit" value="Update">
+            <input type="reset" value="Clear">
+        </form>
+    </div>
+
+    <div class="delete-form">
+        <h2>Delete Form</h2>
+        <form id="deleteForm" action="delete_medication_logs.php" method="post">
+            <label for="medicalIdDelete">Medical ID:</label>
+            <input type="text" id="medicalIdDelete" name="medicalIdDelete" placeholder="Enter Medical ID"><br>
+    
+            <input type="submit" value="Delete">
+            <input type="reset" value="Clear">
+        </form>
+    </div>     
+</div>
+<script>
+    // Function to hide the default option in a dropdown menu
+    function hideDefaultOption(selectId) {
+        var select = document.getElementById(selectId);
+        var options = select.options;
+        for (var i = 0; i < options.length; i++) {
+            if (options[i].value === "") continue; // Skip the first option
+            options[i].hidden = false; // Make all options visible initially
+        }
+        select.querySelector('option[value=""]').hidden = true; // Hide the default option
+    }
+
+    // Call the function for each dropdown menu
+    hideDefaultOption("medicationName");
+    hideDefaultOption("dosage");
+    hideDefaultOption("frequency");
+
+    // Event listener to hide the default option when the user makes a choice
+    document.getElementById("medicationName").addEventListener("change", function() {
+        hideDefaultOption("medicationName");
+    });
+
+    document.getElementById("dosage").addEventListener("change", function() {
+        hideDefaultOption("dosage");
+    });
+
+    document.getElementById("frequency").addEventListener("change", function() {
+        hideDefaultOption("frequency");
+    });
+</script>
+
+
+</body>
+</html>

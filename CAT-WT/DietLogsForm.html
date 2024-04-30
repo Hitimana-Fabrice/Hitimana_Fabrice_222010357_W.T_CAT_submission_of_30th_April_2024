@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diet Logs Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .form-container {
+            margin-bottom: 20px;
+        }
+
+        form {
+            background-color: #f2f2f2;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        /* Targeting label elements to adjust the size */
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px; /* Reduced font size */
+            width: 120px; /* Adjust width as needed */
+        }
+
+        input[type="text"],
+        input[type="date"],
+        select {
+            width: calc(100% - 130px); /* Adjust input width */
+            padding: 6px; /* Reduced padding */
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        input[type="submit"]:hover,
+        input[type="reset"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Diet Logs Form -->
+    <div class="form-container">
+        <h2>Diet Logs Form</h2>
+        <form id="dietLogsForm" action="submit_diet_logs.php" method="post">
+            <label for="userId">User ID:</label>
+            <input type="text" id="userId" name="userId" placeholder="Enter User ID"><br>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date"><br>
+
+            <label for="mealType">Meal Type:</label>
+            <select id="mealType" name="mealType">
+                <option value="Breakfast">Breakfast</option>
+                <option value="Lunch">Lunch</option>
+                <option value="Dinner">Dinner</option>
+            </select><br>
+
+            <label for="foodItem">Food Item:</label>
+            <input type="text" id="foodItem" name="foodItem" placeholder="Enter Food Item,expatatoes,Beans,etc"><br>
+
+            <label for="quantity">Quantity:</label>
+            <input type="text" id="quantity" name="quantity" placeholder="Enter Quantity,ex 2plates, 1plts,etc"><br>
+
+            <label for="caloriesConsumed">Calories Consumed:</label>
+            <input type="text" id="caloriesConsumed" name="caloriesConsumed" placeholder="Enter Calories Consumed,in numbers ex"12,4,5"><br>
+
+            <input type="submit" value="Submit">
+            <input type="reset" value="Clear">
+        </form>
+    </div>
+
+    <!-- Update Form -->
+    <div class="form-container">
+        <h2>Update Form</h2>
+        <form id="updateForm" action="update_diet_logs.php" method="post">
+            <label for="logIdUpdate">Log ID:</label>
+            <input type="text" id="logIdUpdate" name="logIdUpdate" placeholder="Enter Log ID"><br>
+
+            <label for="mealTypeUpdate">Meal Type:</label>
+            <select id="mealTypeUpdate" name="mealTypeUpdate">
+                <option value="Breakfast">Breakfast</option>
+                <option value="Lunch">Lunch</option>
+                <option value="Dinner">Dinner</option>
+            </select><br>
+
+            <label for="quantityUpdate">Quantity:</label>
+            <input type="text" id="quantityUpdate" name="quantityUpdate" placeholder="Enter Quantity"><br>
+
+            <label for="caloriesConsumedUpdate">Calories Consumed:</label>
+            <input type="text" id="caloriesConsumedUpdate" name="caloriesConsumedUpdate" placeholder="Enter Calories Consumed"><br>
+
+            <input type="submit" value="Update">
+            <input type="reset" value="Clear">
+        </form>
+    </div>
+
+    <!-- Delete Form -->
+    <div class="form-container">
+        <h2>Delete Form</h2>
+        <form id="deleteForm" action="delete_diet_logs.php" method="post">
+            <label for="logIdDelete">Log ID:</label>
+            <input type="text" id="logIdDelete" name="logIdDelete" placeholder="Enter Log ID"><br>
+
+            <input type="submit" value="Delete">
+            <input type="reset" value="Clear">
+        </form>
+    </div>
+
+</body>
+</html>
